@@ -158,6 +158,19 @@ header {
   cursor: pointer;
 }
 
+#apply-btn {
+  font-size: 27px;
+  width: 35%;
+  color: white;
+  background-color: #04AA6D;
+}
+
+#applybtn-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .float-right {
   float: right;
 }
@@ -205,5 +218,9 @@ header {
 @media (max-width: 500px) {
   .btn {
     font-size: 0.8rem;
+  }
+
+  #apply-btn {
+    width: 40%;
   }
 }
