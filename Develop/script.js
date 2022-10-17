@@ -30,6 +30,11 @@ btn.onclick = function() {
 // When the user clicks on <span> (x), close the modal
 span.onclick = closeModal;
 
+apply.onclick = function () {
+  closeModal();
+  writePassword();
+}
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -41,6 +46,7 @@ function closeModal() {
   modal.style.display = "none";
 }
 
+// Returns a list of user selected criteria 
 function checkAppliedCriteria() {
   var listofAppliedCriteria = [];
   if (document.getElementById("uppercase").checked) {
@@ -56,6 +62,18 @@ function checkAppliedCriteria() {
     listofAppliedCriteria.push(special);
   }
   return listofAppliedCriteria;
+}
+
+// Randomizes a password using the checkAppliedCriteria function which is the list of user selected criteria
+function generatePassword() {
+  var checkedList = checkAppliedCriteria();
+  var generatePassword = "";
+  for (let x = 0; x < slider.value; x++) {
+    var randomCriteria = checkedList[Math.floor(Math.random()* checkedList.length)]; //Picks a random criteria from the selected ones
+    var randomChar = randomCriteria[Math.floor(Math.random()* randomCriteria.length)]; //Picks a random character from the random criteria
+    generatePassword = generatePassword.concat(randomChar); 
+  }
+  return generatePassword;
 }
 
 // Write password to the #password input
