@@ -30,6 +30,8 @@ btn.onclick = function () {
 // When the user clicks on <span> (x), close the modal
 span.onclick = closeModal;
 
+/* When the apply button is clicked it checks first to to make sure a criteria selected and if true closes the modal
+and writes the password */
 apply.onclick = function () {
   if (checkRequiredCriteria()) {
   closeModal();
@@ -46,6 +48,7 @@ window.onclick = function (event) {
   }
 }
 
+// Closes the modal 
 function closeModal() {
   modal.style.display = "none";
 }
@@ -75,7 +78,7 @@ function generatePassword() {
   for (let x = 0; x < slider.value; x++) {
     var randomCriteria = checkedList[Math.floor(Math.random() * checkedList.length)]; //Picks a random criteria from the selected ones
     var randomChar = randomCriteria[Math.floor(Math.random() * randomCriteria.length)]; //Picks a random character from the random criteria
-    generatePassword = generatePassword.concat(randomChar);
+    generatePassword = generatePassword.concat(randomChar); //Rewrites the generatePassword variable and adds the new random character
   }
   return generatePassword;
 }
@@ -87,6 +90,7 @@ function writePassword() {
   passwordText.value = password;
 }
 
+// Checks if a required criteria is selected 
 function checkRequiredCriteria() {
   if (document.getElementById("uppercase").checked ||
     document.getElementById("lowercase").checked ||
