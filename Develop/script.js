@@ -18,12 +18,12 @@ var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;
 
-slider.oninput = function() {
+slider.oninput = function () {
   output.innerHTML = this.value;
 }
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
 }
 
@@ -31,12 +31,16 @@ btn.onclick = function() {
 span.onclick = closeModal;
 
 apply.onclick = function () {
+  if (checkRequiredCriteria()) {
   closeModal();
   writePassword();
+} else {
+  alert("Need to select at least one criteria")
+}
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     closeModal();
   }
@@ -69,9 +73,9 @@ function generatePassword() {
   var checkedList = checkAppliedCriteria();
   var generatePassword = "";
   for (let x = 0; x < slider.value; x++) {
-    var randomCriteria = checkedList[Math.floor(Math.random()* checkedList.length)]; //Picks a random criteria from the selected ones
-    var randomChar = randomCriteria[Math.floor(Math.random()* randomCriteria.length)]; //Picks a random character from the random criteria
-    generatePassword = generatePassword.concat(randomChar); 
+    var randomCriteria = checkedList[Math.floor(Math.random() * checkedList.length)]; //Picks a random criteria from the selected ones
+    var randomChar = randomCriteria[Math.floor(Math.random() * randomCriteria.length)]; //Picks a random character from the random criteria
+    generatePassword = generatePassword.concat(randomChar);
   }
   return generatePassword;
 }
@@ -83,3 +87,13 @@ function writePassword() {
   passwordText.value = password;
 }
 
+function checkRequiredCriteria() {
+  if (document.getElementById("uppercase").checked ||
+    document.getElementById("lowercase").checked ||
+    document.getElementById("numbers").checked ||
+    document.getElementById("special").checked) {
+    return true;
+  } else {
+    return false
+  }
+}
