@@ -34,10 +34,19 @@
       <span class="close">&times;</span>
       <h1>Password Criteria</h1>
       <h2>Amount of Characters</h2>
+      <!-- Range Slider -->
       <div class="slidecontainer">
         <input type="range" min="8" max="128" value="64" class="slider" id="myRange">
         <p>Value: <span id="demo"></span></p>
       </div>
+      <input type="checkbox">
+      <label for="lowercase">Lowercase Characters (a-z)</label><br>
+      <input type="checkbox">
+      <label for="uppercase">Uppercase Characters (A-Z)</label><br>
+      <input type="checkbox">
+      <label for="numbers">Numbers (0-9)</label><br>
+      <input type="checkbox">
+      <label for="special">Special Characters (!,?,&, etc.)</label><br>
     </div>
     <script src="./Develop/script.js"></script>
 </body>
